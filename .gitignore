@@ -1,0 +1,8 @@
+/data/rate-limits/*
+/data/orders/*
+!/data/rate-limits/.gitkeep
+!/data/orders/.gitkeep
+*.log
+.DS_Store
+.env
+.env.local
