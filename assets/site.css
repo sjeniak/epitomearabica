@@ -255,14 +255,17 @@ button {
   position: absolute;
   inset: 0;
   z-index: -2;
+  overflow: hidden;
 }
 
 .hero-media img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 155%;
   object-fit: cover;
-  object-position: center 88%;
-  transform: scale(1.08);
+  object-position: center bottom;
 }
 
 .hero-veil {
@@ -1221,6 +1224,10 @@ textarea:focus-visible {
 }
 
 @media (max-width: 640px) {
+  .hero-media img {
+    height: 195%;
+    object-position: center 92%;
+  }
   .form-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
   .hero-actions .btn { width: 100%; }
