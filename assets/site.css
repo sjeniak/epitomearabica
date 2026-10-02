@@ -535,16 +535,16 @@ button {
 
 .bloom-glow {
   position: absolute;
-  width: min(78%, 460px);
+  width: min(86%, 520px);
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(
-    ellipse at 50% 60%,
-    rgba(201, 146, 74, 0.32) 0%,
-    rgba(107, 26, 26, 0.16) 45%,
-    transparent 72%
+    ellipse at 50% 55%,
+    rgba(201, 146, 74, 0.38) 0%,
+    rgba(107, 26, 26, 0.18) 42%,
+    transparent 70%
   );
-  filter: blur(28px);
+  filter: blur(32px);
   animation: glowPulse 3.5s ease-in-out infinite;
   z-index: 0;
 }
@@ -561,35 +561,35 @@ button {
   border-radius: 36px;
   animation: productFloat 6s ease-in-out infinite;
   -webkit-mask-image: radial-gradient(
-    ellipse 80% 84% at 50% 48%,
-    #000 25%,
-    rgba(0, 0, 0, 0.9) 42%,
-    rgba(0, 0, 0, 0.55) 58%,
-    rgba(0, 0, 0, 0.18) 73%,
-    transparent 88%
+    ellipse 72% 78% at 50% 46%,
+    #000 18%,
+    rgba(0, 0, 0, 0.9) 34%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.14) 66%,
+    transparent 80%
   );
   mask-image: radial-gradient(
-    ellipse 80% 84% at 50% 48%,
-    #000 25%,
-    rgba(0, 0, 0, 0.9) 42%,
-    rgba(0, 0, 0, 0.55) 58%,
-    rgba(0, 0, 0, 0.18) 73%,
-    transparent 88%
+    ellipse 72% 78% at 50% 46%,
+    #000 18%,
+    rgba(0, 0, 0, 0.9) 34%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.14) 66%,
+    transparent 80%
   );
 }
 
 .bloom-product img {
-  filter: brightness(1.05) contrast(1.04);
+  filter: brightness(1.06) contrast(1.06);
 }
 
 .bloom-product::after {
   border-radius: 36px;
   background: radial-gradient(
-    ellipse 72% 78% at 50% 48%,
-    transparent 32%,
-    rgba(7, 6, 5, 0.22) 55%,
-    rgba(7, 6, 5, 0.65) 76%,
-    rgba(7, 6, 5, 0.95) 100%
+    ellipse 64% 70% at 50% 46%,
+    transparent 24%,
+    rgba(7, 6, 5, 0.28) 48%,
+    rgba(7, 6, 5, 0.72) 68%,
+    rgba(7, 6, 5, 0.97) 86%
   );
 }
 
@@ -839,20 +839,20 @@ button {
 .bloom-ritual {
   border-radius: 40px;
   -webkit-mask-image: radial-gradient(
-    ellipse 86% 88% at 50% 50%,
-    #000 28%,
-    rgba(0, 0, 0, 0.88) 46%,
-    rgba(0, 0, 0, 0.5) 62%,
-    rgba(0, 0, 0, 0.12) 76%,
-    transparent 90%
+    ellipse 78% 82% at 50% 48%,
+    #000 22%,
+    rgba(0, 0, 0, 0.88) 40%,
+    rgba(0, 0, 0, 0.48) 56%,
+    rgba(0, 0, 0, 0.12) 70%,
+    transparent 84%
   );
   mask-image: radial-gradient(
-    ellipse 86% 88% at 50% 50%,
-    #000 28%,
-    rgba(0, 0, 0, 0.88) 46%,
-    rgba(0, 0, 0, 0.5) 62%,
-    rgba(0, 0, 0, 0.12) 76%,
-    transparent 90%
+    ellipse 78% 82% at 50% 48%,
+    #000 22%,
+    rgba(0, 0, 0, 0.88) 40%,
+    rgba(0, 0, 0, 0.48) 56%,
+    rgba(0, 0, 0, 0.12) 70%,
+    transparent 84%
   );
 }
 
@@ -868,11 +868,11 @@ button {
 .bloom-ritual::after {
   border-radius: 40px;
   background: radial-gradient(
-    ellipse 74% 76% at 50% 50%,
-    transparent 34%,
-    rgba(7, 6, 5, 0.28) 56%,
-    rgba(7, 6, 5, 0.7) 76%,
-    rgba(7, 6, 5, 0.97) 100%
+    ellipse 68% 72% at 50% 48%,
+    transparent 28%,
+    rgba(7, 6, 5, 0.3) 52%,
+    rgba(7, 6, 5, 0.74) 72%,
+    rgba(7, 6, 5, 0.98) 90%
   );
 }
 
