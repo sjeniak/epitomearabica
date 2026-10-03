@@ -501,7 +501,10 @@ button {
 .bloom-origin img {
   aspect-ratio: 4 / 5;
   height: 580px;
-  object-position: center 78%;
+  object-fit: cover;
+  object-position: 28% 70%;
+  transform: scale(2.05);
+  transform-origin: 32% 68%;
   filter: saturate(0.88) brightness(0.92);
   transition: transform 0.7s ease;
 }
@@ -1241,7 +1244,7 @@ textarea:focus-visible {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .bloom-origin:hover img,
+  .bloom-origin:hover img { transform: scale(2.18); }
   .bloom-ritual:hover img { transform: scale(1.04); }
   .shot:hover img { transform: scale(1.06); filter: saturate(0.95) brightness(0.92); }
   .shot:hover .bloom-veil { opacity: 0.65; }
