@@ -499,10 +499,11 @@ button {
 }
 
 .bloom-origin img {
+  width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
-  height: 580px;
   object-fit: cover;
-  object-position: center 46%;
+  object-position: center 48%;
   filter: saturate(0.88) brightness(0.92);
   transition: transform 0.7s ease;
 }
@@ -1216,7 +1217,6 @@ textarea:focus-visible {
   }
   .shot-lg { grid-row: auto; }
   .shot-lg img { min-height: 320px; }
-  .bloom-origin img { height: 420px; }
   .bloom-ritual img { height: 420px; }
   .product-shot { min-height: 420px; }
   .bloom-product { max-width: 360px; margin: 0 auto; }
@@ -1236,7 +1236,6 @@ textarea:focus-visible {
   .footer-base { flex-direction: column; }
   .brand-name { letter-spacing: 0.28em; }
   .product-shot { min-height: 340px; }
-  .bloom-origin img,
   .bloom-ritual img { height: 320px; }
   .bloom-product { max-width: 300px; }
 }
