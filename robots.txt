@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /data/
+Disallow: /inc/
+Disallow: /token.php
+Disallow: /mail.php
+
+Sitemap: https://epitomearabica.com/sitemap.xml
