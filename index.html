@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=seo-1">
+  <link rel="stylesheet" href="assets/site.css?v=tetris-1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -159,6 +159,7 @@
         <li><a href="#coffee">The coffee</a></li>
         <li><a href="#world">In the world</a></li>
         <li><a href="#ritual">The cup</a></li>
+        <li><a href="#fun" class="nav-fun" data-tetris-open>Fun With Epitome</a></li>
         <li><a href="#reserve" class="nav-cta">Reserve</a></li>
       </ul>
     </nav>
@@ -172,6 +173,7 @@
     <a href="#coffee">The coffee</a>
     <a href="#world">In the world</a>
     <a href="#ritual">The cup</a>
+    <a href="#fun" data-tetris-open>Fun With Epitome</a>
     <a href="#reserve">Reserve</a>
   </nav>
 
@@ -483,6 +485,37 @@
     </div>
   </footer>
 
+  <div class="tetris-overlay" id="tetrisOverlay" hidden>
+    <div class="tetris-panel" role="dialog" aria-modal="true" aria-labelledby="tetrisTitle">
+      <button class="tetris-close" id="tetrisClose" type="button" aria-label="Close Fun With Epitome">Close</button>
+      <p class="chapter-label">A small diversion</p>
+      <h2 id="tetrisTitle">Fun With Epitome</h2>
+      <p class="tetris-lede">Stack roasted Arabica. Clear ten rows and the roast hurries.</p>
+      <div class="tetris-layout">
+        <canvas id="tetrisBoard" width="300" height="600" aria-label="Coffee bean Tetris board"></canvas>
+        <div class="tetris-side">
+          <p class="tetris-side-label">Next</p>
+          <canvas id="tetrisNext" width="120" height="120" aria-hidden="true"></canvas>
+          <dl class="tetris-stats">
+            <div><dt>Rows</dt><dd id="tetrisLines">0</dd></div>
+            <div><dt>Score</dt><dd id="tetrisScore">0</dd></div>
+            <div><dt>Tempo</dt><dd id="tetrisTempo">Calm</dd></div>
+          </dl>
+          <button class="btn btn-line tetris-restart" id="tetrisRestart" type="button">New roast</button>
+        </div>
+      </div>
+      <div class="tetris-pad" aria-label="Game controls">
+        <button type="button" data-tetris="left" aria-label="Move left">←</button>
+        <button type="button" data-tetris="rotate" aria-label="Rotate">⟳</button>
+        <button type="button" data-tetris="right" aria-label="Move right">→</button>
+        <button type="button" data-tetris="down" aria-label="Soft drop">↓</button>
+        <button type="button" data-tetris="drop" aria-label="Hard drop">Drop</button>
+      </div>
+      <p class="tetris-hint">On-screen buttons work on any device. Arrows and space work on a keyboard.</p>
+    </div>
+  </div>
+
   <script src="assets/site.js"></script>
+  <script src="assets/tetris.js"></script>
 </body>
 </html>

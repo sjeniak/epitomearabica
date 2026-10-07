@@ -144,7 +144,7 @@ button {
 .nav-desktop {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.35rem;
   list-style: none;
 }
 
@@ -175,6 +175,18 @@ button {
 
 .nav-cta:hover {
   background: rgba(196, 163, 106, 0.1);
+}
+
+.nav-fun {
+  letter-spacing: 0.12em !important;
+}
+
+@media (max-width: 1280px) {
+  .nav-desktop { gap: 0.95rem; }
+  .nav-desktop a {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+  }
 }
 
 .menu-toggle {
@@ -1339,4 +1351,172 @@ textarea:focus-visible {
   }
   .reveal { opacity: 1; transform: none; }
   .shot:hover img { transform: none; }
+}
+
+.tetris-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.2rem;
+  overflow: auto;
+  background: rgba(7, 6, 5, 0.82);
+  backdrop-filter: blur(16px);
+}
+
+.tetris-overlay.is-open {
+  display: flex;
+}
+
+.tetris-panel {
+  position: relative;
+  width: min(100%, 720px);
+  max-height: min(96dvh, 920px);
+  overflow: auto;
+  background: linear-gradient(180deg, #14110d 0%, #0a0907 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(196, 163, 106, 0.08);
+  padding: 1.5rem 1.4rem 1.2rem;
+}
+
+.tetris-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--line);
+  min-height: 2.4rem;
+  padding: 0 0.9rem;
+}
+
+.tetris-close:hover { background: rgba(196, 163, 106, 0.1); }
+
+.tetris-panel .chapter-label { margin-bottom: 0.45rem; }
+
+.tetris-panel h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 500;
+  color: var(--gold-bright);
+  letter-spacing: 0.04em;
+}
+
+.tetris-lede {
+  margin: 0.45rem 0 1.2rem;
+  color: var(--cream-dim);
+  font-style: italic;
+  font-size: 1.05rem;
+  max-width: 28rem;
+}
+
+.tetris-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.tetris-overlay canvas {
+  display: block;
+  background: #070605;
+  border: 1px solid var(--line);
+}
+
+#tetrisBoard {
+  width: 100%;
+  height: auto;
+  max-height: 62dvh;
+  aspect-ratio: 1 / 2;
+}
+
+#tetrisNext {
+  width: 120px;
+  height: 120px;
+}
+
+.tetris-side-label,
+.tetris-stats dt {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.tetris-stats {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.tetris-stats dd {
+  font-size: 1.35rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+
+.tetris-restart {
+  margin-top: 1.1rem;
+  width: 100%;
+  min-height: 2.6rem;
+  padding: 0.5rem 0.6rem;
+}
+
+.tetris-pad {
+  margin-top: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.45rem;
+}
+
+.tetris-pad button {
+  min-height: 3.1rem;
+  border: 1px solid var(--line-strong);
+  color: var(--gold-bright);
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(196, 163, 106, 0.06);
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.tetris-pad button:active,
+.tetris-pad button.is-held {
+  background: rgba(196, 163, 106, 0.22);
+  color: #120f0c;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+}
+
+.tetris-hint {
+  margin-top: 0.85rem;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+}
+
+@media (max-width: 640px) {
+  .tetris-overlay { padding: 0.7rem; }
+  .tetris-panel { padding: 1.15rem 0.9rem 0.9rem; }
+  .tetris-layout { grid-template-columns: 1fr; }
+  .tetris-side {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 0.55rem 0.9rem;
+    align-items: center;
+  }
+  .tetris-restart { grid-column: 1 / -1; margin-top: 0.4rem; }
+  .tetris-pad { grid-template-columns: repeat(3, 1fr); }
+  .tetris-pad button[data-tetris="drop"] { grid-column: 1 / -1; }
+  .tetris-pad button { min-height: 2.8rem; }
+  #tetrisBoard { max-height: 36dvh; }
+  #tetrisNext { width: 96px; height: 96px; }
 }
