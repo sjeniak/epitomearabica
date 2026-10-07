@@ -178,37 +178,38 @@
   const drawBean = (ctx, cx, cy, size, type, ghost) => {
     const pal = PALETTE[type] || PALETTE.T;
     const seed = Math.abs(Math.sin(cx * 12.9898 + cy * 78.233) * 43758.5453);
-    const rot = (seed % 1) * 0.7 - 0.35;
+    const rot = (seed % 1) * 0.16 - 0.08;
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(rot);
     ctx.globalAlpha = ghost ? 0.28 : 1;
-    const rx = size * 0.4;
-    const ry = size * 0.24;
+    const r = size * 0.42;
+    const rx = r;
+    const ry = r * 0.94;
     ctx.beginPath();
-    ctx.ellipse(0, 1.4, rx, ry, 0, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(0,0,0,0.35)";
+    ctx.ellipse(0, size * 0.04, rx, ry, 0, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(0,0,0,0.32)";
     ctx.fill();
-    const g = ctx.createLinearGradient(-rx, -ry, rx, ry);
+    const g = ctx.createRadialGradient(-rx * 0.28, -ry * 0.32, r * 0.08, 0, 0, r);
     g.addColorStop(0, pal.glow);
-    g.addColorStop(0.35, pal.body[0]);
+    g.addColorStop(0.42, pal.body[0]);
     g.addColorStop(1, pal.body[1]);
     ctx.beginPath();
     ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
     ctx.fillStyle = g;
     ctx.fill();
     ctx.strokeStyle = ghost ? "rgba(196,163,106,0.45)" : pal.body[0];
-    ctx.lineWidth = Math.max(1, size * 0.04);
+    ctx.lineWidth = Math.max(1, size * 0.045);
     ctx.stroke();
     ctx.beginPath();
-    ctx.moveTo(-rx * 0.55, 0);
-    ctx.quadraticCurveTo(0, ry * 0.35, rx * 0.55, 0);
+    ctx.moveTo(-rx * 0.22, -ry * 0.42);
+    ctx.quadraticCurveTo(rx * 0.08, 0, -rx * 0.12, ry * 0.48);
     ctx.strokeStyle = pal.crease;
-    ctx.lineWidth = Math.max(1.2, size * 0.07);
+    ctx.lineWidth = Math.max(1.4, size * 0.08);
     ctx.lineCap = "round";
     ctx.stroke();
     ctx.beginPath();
-    ctx.ellipse(-rx * 0.28, -ry * 0.32, rx * 0.22, ry * 0.14, -0.4, 0, Math.PI * 2);
+    ctx.ellipse(-rx * 0.26, -ry * 0.28, rx * 0.22, ry * 0.18, -0.35, 0, Math.PI * 2);
     ctx.fillStyle = "rgba(255,245,220,0.28)";
     ctx.fill();
     ctx.restore();
@@ -273,10 +274,12 @@
   };
 
   const drawNext = () => {
-    const ctx = fitCanvas(nextEl, 120, 120);
-    ctx.clearRect(0, 0, 120, 120);
+    const rect = nextEl.getBoundingClientRect();
+    const side = Math.max(72, rect.width || 96);
+    const ctx = fitCanvas(nextEl, side, side);
+    ctx.clearRect(0, 0, side, side);
     ctx.fillStyle = "#070605";
-    ctx.fillRect(0, 0, 120, 120);
+    ctx.fillRect(0, 0, side, side);
     const cells = SHAPES[nextType][0];
     const xs = cells.map((c) => c[0]);
     const ys = cells.map((c) => c[1]);
@@ -284,9 +287,9 @@
     const maxX = Math.max(...xs);
     const minY = Math.min(...ys);
     const maxY = Math.max(...ys);
-    const cell = 26;
-    const ox = (120 - (maxX - minX + 1) * cell) / 2;
-    const oy = (120 - (maxY - minY + 1) * cell) / 2;
+    const cell = side / 4.2;
+    const ox = (side - (maxX - minX + 1) * cell) / 2;
+    const oy = (side - (maxY - minY + 1) * cell) / 2;
     cells.forEach(([x, y]) => {
       drawBean(
         ctx,
@@ -437,6 +440,13 @@
       event.preventDefault();
       act(map[event.code]);
     }
+  });
+
+  window.addEventListener("resize", () => {
+    if (open) render();
+  });
+  window.visualViewport?.addEventListener("resize", () => {
+    if (open) render();
   });
 
   if (location.hash === "#fun") setOpen(true);
