@@ -215,6 +215,8 @@
     ctx.restore();
   };
 
+  const isPhone = () => window.matchMedia("(max-width: 720px)").matches;
+
   const fitCanvas = (canvas, cssW, cssH) => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.round(cssW * dpr);
@@ -225,9 +227,28 @@
   };
 
   const drawBoard = () => {
-    const rect = boardEl.getBoundingClientRect();
-    const w = Math.max(160, rect.width);
-    const h = w * 2;
+    const stage = document.querySelector(".tetris-stage");
+    let w;
+    let h;
+    if (isPhone() && stage) {
+      const sw = stage.clientWidth;
+      const sh = stage.clientHeight;
+      if (sw < 40 || sh < 40) return;
+      w = Math.floor(Math.min(sw, sh / 2));
+      h = w * 2;
+      boardEl.style.width = `${w}px`;
+      boardEl.style.height = `${h}px`;
+      boardEl.style.left = `${Math.max(0, Math.floor((sw - w) / 2))}px`;
+      boardEl.style.top = `${Math.max(0, Math.floor((sh - h) / 2))}px`;
+    } else {
+      boardEl.style.width = "";
+      boardEl.style.height = "";
+      boardEl.style.left = "";
+      boardEl.style.top = "";
+      const rect = boardEl.getBoundingClientRect();
+      w = Math.max(160, rect.width);
+      h = w * 2;
+    }
     const ctx = fitCanvas(boardEl, w, h);
     ctx.clearRect(0, 0, w, h);
     ctx.fillStyle = "#070605";
@@ -275,7 +296,7 @@
 
   const drawNext = () => {
     const rect = nextEl.getBoundingClientRect();
-    const side = Math.max(72, rect.width || 96);
+    const side = Math.max(36, Math.round(rect.width || 56));
     const ctx = fitCanvas(nextEl, side, side);
     ctx.clearRect(0, 0, side, side);
     ctx.fillStyle = "#070605";
@@ -287,9 +308,13 @@
     const maxX = Math.max(...xs);
     const minY = Math.min(...ys);
     const maxY = Math.max(...ys);
-    const cell = side / 4.2;
-    const ox = (side - (maxX - minX + 1) * cell) / 2;
-    const oy = (side - (maxY - minY + 1) * cell) / 2;
+    const spanX = maxX - minX + 1;
+    const spanY = maxY - minY + 1;
+    const pad = side * 0.14;
+    const inner = Math.max(8, side - pad * 2);
+    const cell = inner / Math.max(spanX, spanY, 2);
+    const ox = (side - spanX * cell) / 2;
+    const oy = (side - spanY * cell) / 2;
     cells.forEach(([x, y]) => {
       drawBean(
         ctx,
@@ -339,10 +364,12 @@
     document.body.style.overflow = value || document.querySelector(".nav-drawer.is-open") ? "hidden" : "";
     if (value) {
       lastFocus = document.activeElement;
-      reset();
+      overlay.focus({ preventScroll: true });
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(tick);
-      closeBtn?.focus();
+      requestAnimationFrame(() => {
+        reset();
+        raf = requestAnimationFrame(tick);
+      });
     } else {
       paused = true;
       cancelAnimationFrame(raf);
@@ -448,6 +475,14 @@
   window.visualViewport?.addEventListener("resize", () => {
     if (open) render();
   });
+  const stageEl = document.querySelector(".tetris-stage");
+  if (typeof ResizeObserver !== "undefined") {
+    const ro = new ResizeObserver(() => {
+      if (open) render();
+    });
+    if (stageEl) ro.observe(stageEl);
+    ro.observe(nextEl);
+  }
 
   if (location.hash === "#fun") setOpen(true);
 

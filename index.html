@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=tetris-2">
+  <link rel="stylesheet" href="assets/site.css?v=tetris-4">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -485,7 +485,7 @@
     </div>
   </footer>
 
-  <div class="tetris-overlay" id="tetrisOverlay" hidden>
+  <div class="tetris-overlay" id="tetrisOverlay" hidden tabindex="-1">
     <div class="tetris-panel" role="dialog" aria-modal="true" aria-labelledby="tetrisTitle">
       <header class="tetris-top">
         <div>
@@ -498,9 +498,11 @@
         </div>
       </header>
       <p class="tetris-lede">Stack roasted Arabica. Clear ten rows and the roast hurries.</p>
-      <div class="tetris-layout">
-        <canvas id="tetrisBoard" width="300" height="600" aria-label="Coffee bean Tetris board"></canvas>
-        <div class="tetris-side">
+      <div class="tetris-play">
+        <div class="tetris-stage">
+          <canvas id="tetrisBoard" width="300" height="600" aria-label="Coffee bean Tetris board"></canvas>
+        </div>
+        <div class="tetris-hud">
           <div class="tetris-next-wrap">
             <p class="tetris-side-label">Next</p>
             <canvas id="tetrisNext" width="120" height="120" aria-hidden="true"></canvas>
@@ -524,6 +526,6 @@
   </div>
 
   <script src="assets/site.js"></script>
-  <script src="assets/tetris.js"></script>
+  <script src="assets/tetris.js?v=tetris-4"></script>
 </body>
 </html>
