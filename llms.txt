@@ -1,0 +1,38 @@
+# Epitome
+
+> Single-origin Ceylon specialty coffee from the central highlands of Sri Lanka. The essence of Ceylon coffee.
+
+Epitome is a Sri Lankan luxury coffee brand reviving the island's pre-tea coffee heritage. One coffee: Epitome — a 500 g bag of whole-bean, medium-roast, single-origin Arabica grown at 1,200–1,800 m in shade-grown Kandyan gardens.
+
+## Key facts
+- Brand: Epitome
+- Product: Epitome — 500 g, whole bean, medium roast, single-origin Ceylon Arabica
+- Origin: Central Highlands, Sri Lanka (1,200–1,800 m)
+- Tasting notes: dark chocolate, vanilla, stone fruit; moderate acidity, silky body
+- Brew: pour-over (18 g / 93 °C / ~300 ml), espresso, French press, moka, cold brew
+- Availability: reserve online; also in select Sri Lankan supermarkets
+- Contact: support@epitomearabica.com
+
+## Pages
+- [Home](https://epitomearabica.com/)
+- [Origin & story](https://epitomearabica.com/#origin)
+- [The coffee](https://epitomearabica.com/#coffee)
+- [The cup / brew guide](https://epitomearabica.com/#ritual)
+- [Reserve](https://epitomearabica.com/#reserve)
+- [Wholesale & hospitality](https://epitomearabica.com/#wholesale)
+- [Journal](https://epitomearabica.com/journal/)
+- [The Ceylon Coffee Revival](https://epitomearabica.com/journal/the-ceylon-coffee-revival.html)
+- [How to Brew Pour-Over](https://epitomearabica.com/journal/how-to-brew-pour-over.html)
+- [Ceylon Arabica vs. the World](https://epitomearabica.com/journal/ceylon-arabica-vs-the-world.html)
+- [Why Shade-Grown Matters](https://epitomearabica.com/journal/why-shade-grown-matters.html)
+- [Find us / Locations](https://epitomearabica.com/locations.html)
+- [Legal & Disclaimer](https://epitomearabica.com/legal.html)
+
+## Social
+- [Instagram](https://www.instagram.com/the.essence.of.sri.lanka/)
+- [Facebook](https://www.facebook.com/profile.php?id=61584592581260)
+- [X](https://x.com/essence_of_LK)
+
+## Optional
+- [Full brand facts](https://epitomearabica.com/llms-full.txt)
+- [Sitemap](https://epitomearabica.com/sitemap.xml)

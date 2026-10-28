@@ -1,0 +1,385 @@
+/* Epitome — on-page chat widget.
+   Load after site.css so the custom properties (--bg, --gold, --serif, …) resolve. */
+
+.epi-launcher {
+  position: fixed;
+  right: 1.25rem;
+  right: calc(1.25rem + env(safe-area-inset-right, 0px));
+  bottom: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 75;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg-panel);
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.epi-launcher:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-bright);
+  background: #1a1612;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(196, 163, 106, 0.18);
+}
+
+.epi-launcher:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.epi-glyph {
+  display: block;
+  line-height: 1;
+  transform: translateY(-0.02em);
+}
+
+.epi-dot {
+  position: absolute;
+  top: 0.32rem;
+  right: 0.32rem;
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  border: 2px solid var(--bg);
+  animation: epi-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes epi-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.epi-panel {
+  position: fixed;
+  right: 1.25rem;
+  right: calc(1.25rem + env(safe-area-inset-right, 0px));
+  bottom: 5.4rem;
+  bottom: calc(5.4rem + env(safe-area-inset-bottom, 0px));
+  z-index: 76;
+  width: min(100% - 2.5rem, 22rem);
+  max-height: min(72dvh, 40rem);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #15110d 0%, #0a0907 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(196, 163, 106, 0.08);
+  overflow: hidden;
+  transform-origin: bottom right;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+}
+
+.epi-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}
+
+.epi-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 1rem 1.1rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.epi-head-copy {
+  min-width: 0;
+}
+
+.epi-kicker {
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.epi-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--gold-bright);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin-top: 0.15rem;
+}
+
+.epi-close {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  color: var(--cream-dim);
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.epi-close:hover {
+  color: var(--gold-bright);
+  background: rgba(196, 163, 106, 0.1);
+  border-color: var(--gold);
+}
+
+.epi-log {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.epi-msg {
+  max-width: 86%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.epi-msg--bot { align-self: flex-start; }
+.epi-msg--user { align-self: flex-end; }
+
+.epi-bubble {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+  padding: 0.62rem 0.82rem;
+  border: 1px solid var(--line);
+}
+
+.epi-msg--bot .epi-bubble {
+  background: rgba(196, 163, 106, 0.06);
+  border-radius: 0.15rem 0.9rem 0.9rem 0.9rem;
+}
+
+.epi-msg--user .epi-bubble {
+  background: rgba(196, 163, 106, 0.14);
+  border-color: var(--line-strong);
+  color: var(--gold-bright);
+  border-radius: 0.9rem 0.15rem 0.9rem 0.9rem;
+}
+
+.epi-msg--greeting .epi-bubble {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.45;
+  color: var(--cream);
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.epi-msg--greeting { max-width: 100%; }
+
+.epi-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.epi-action {
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold);
+  border: 1px solid var(--line-strong);
+  padding: 0.45rem 0.72rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.epi-action:hover {
+  background: rgba(196, 163, 106, 0.1);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.epi-lead {
+  padding: 0.75rem 1.1rem 0.9rem;
+  border-top: 1px solid var(--line);
+  background: rgba(196, 163, 106, 0.04);
+}
+
+.epi-lead[hidden] { display: none; }
+
+.epi-lead-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.epi-lead-row {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.epi-lead-row input {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  padding: 0.6rem 0.72rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.epi-lead-row input:focus {
+  border-color: var(--gold);
+  background: rgba(196, 163, 106, 0.07);
+}
+
+.epi-lead-row input::placeholder {
+  color: rgba(239, 228, 210, 0.28);
+}
+
+.epi-lead-btn {
+  flex: 0 0 auto;
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #120f0c;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold) 60%, var(--gold-deep));
+  padding: 0 0.9rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.epi-lead-btn:hover:not(:disabled) { transform: translateY(-1px); }
+.epi-lead-btn:disabled { opacity: 0.65; cursor: wait; }
+
+.epi-lead-note {
+  display: none;
+  margin-top: 0.55rem;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+}
+
+.epi-lead-note.is-visible { display: block; }
+.epi-lead-note.is-error { color: var(--danger); }
+
+.epi-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.7rem 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.epi-quick button {
+  font-family: var(--sans);
+  font-size: 0.55rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--cream-dim);
+  border: 1px solid var(--line);
+  padding: 0.42rem 0.62rem;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.epi-quick button:hover {
+  color: var(--gold-bright);
+  border-color: var(--gold);
+  background: rgba(196, 163, 106, 0.06);
+}
+
+.epi-composer {
+  display: flex;
+  gap: 0.45rem;
+  padding: 0.7rem 1.1rem 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.epi-composer input {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  padding: 0.6rem 0.72rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.epi-composer input:focus {
+  border-color: var(--gold);
+  background: rgba(196, 163, 106, 0.07);
+}
+
+.epi-composer input::placeholder {
+  color: rgba(239, 228, 210, 0.3);
+}
+
+.epi-composer button {
+  flex: 0 0 auto;
+  width: 2.7rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  color: var(--gold);
+  font-size: 1.05rem;
+  line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.epi-composer button:hover {
+  background: rgba(196, 163, 106, 0.12);
+  color: var(--gold-bright);
+  border-color: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .epi-launcher,
+  .epi-panel,
+  .epi-close,
+  .epi-action,
+  .epi-quick button,
+  .epi-composer button,
+  .epi-composer input,
+  .epi-lead-btn,
+  .epi-lead-row input {
+    transition: none !important;
+    animation: none !important;
+  }
+  .epi-dot { animation: none !important; }
+}

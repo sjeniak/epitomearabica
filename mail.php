@@ -140,13 +140,13 @@ $quantity  = (int) ($_POST['quantity'] ?? 1);
 $notes     = cleanBody((string) ($_POST['notes'] ?? ''));
 
 $allowedGrinds = [
-    'Whole Roasted Beans — Medium Roast',
-    'Whole Roasted Beans - Medium Roast',
+    'Epitome — Whole Bean · Medium Roast',
+    'Epitome - Whole Bean - Medium Roast',
 ];
 $grindRaw = cleanHeader((string) ($_POST['grind'] ?? ''));
 $grind    = in_array($grindRaw, $allowedGrinds, true)
     ? $grindRaw
-    : 'Whole Roasted Beans — Medium Roast';
+    : 'Epitome — Whole Bean · Medium Roast';
 
 $errors = [];
 if ($firstName === '') {

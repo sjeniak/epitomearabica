@@ -1,6 +1,6 @@
 # Epitome
 
-Luxury site for **Epitome**, a Sri Lankan highland Arabica house. One product: Premium Arabica Coffee, 500 g, whole bean, medium roast. Product of Sri Lanka.
+Luxury site for **Epitome**, a Sri Lankan highland Arabica house. One product: Epitome, 500 g, whole bean, medium roast. Product of Sri Lanka.
 
 The previous amateur page was retired. This is a new editorial site — crest, bag, and lifestyle stills — with a working reserve form.
 
@@ -44,3 +44,14 @@ Success `{ "ok": true }`. Errors `{ "ok": false, "error": "..." }` or `{ "ok": f
 - `token.php` / `mail.php` — CSRF + order mail
 - `inc/bootstrap.php` — session and JSON helpers
 - `assets/` — crest, product, and lifestyle images, plus CSS/JS
+
+## Lead capture
+
+In addition to the order form (`mail.php`), a single lead endpoint serves the two new on-page forms, with the same security model (CSRF, honeypot, rate limiting, session hardening):
+
+| Endpoint | Purpose | Fields |
+| --- | --- | --- |
+| `lead.php` (`type=subscribe`) | Reserve List signup | `email` |
+| `lead.php` (`type=wholesale`) | Wholesale & hospitality enquiry | `name`, `email`, `venue`, `city`, `volume`, `message` |
+
+Both POST with `_csrf` (from `token.php`) and `_gotcha`. Leads are always appended as JSON lines under `data/leads/` (override with `EPITOME_LEAD_DIR`); mail is sent when `EPITOME_MAIL_MODE` allows it. The on-page chat widget uses the subscribe endpoint for inline email capture.

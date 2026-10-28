@@ -1,7 +1,9 @@
 /data/rate-limits/*
 /data/orders/*
+/data/leads/*
 !/data/rate-limits/.gitkeep
 !/data/orders/.gitkeep
+!/data/leads/.gitkeep
 *.log
 .DS_Store
 .env

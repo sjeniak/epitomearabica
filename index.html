@@ -30,16 +30,17 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Epitome Premium Arabica 500 g bag — whole bean Ceylon specialty coffee from Sri Lanka">
+  <meta property="og:image:alt" content="Epitome 500 g bag — whole bean Ceylon specialty coffee from Sri Lanka">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Epitome — Ceylon Specialty Coffee">
   <meta name="twitter:description" content="Single-origin Sri Lankan Arabica. Highland grown, 500 g whole bean, medium roast. Reserve a bag from the house.">
   <meta name="twitter:image" content="https://epitomearabica.com/assets/og.jpg">
-  <meta name="twitter:image:alt" content="Epitome Premium Arabica 500 g bag — whole bean Ceylon specialty coffee from Sri Lanka">
+  <meta name="twitter:image:alt" content="Epitome 500 g bag — whole bean Ceylon specialty coffee from Sri Lanka">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=tetris-4">
+  <link rel="stylesheet" href="assets/chatbot.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -62,7 +63,17 @@
           "https://www.instagram.com/the.essence.of.sri.lanka/",
           "https://www.facebook.com/profile.php?id=61584592581260",
           "https://x.com/essence_of_LK"
-        ]
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@epitomearabica.com",
+          "availableLanguage": ["en"]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "LK"
+        }
       },
       {
         "@type": "WebSite",
@@ -73,9 +84,21 @@
         "publisher": { "@id": "https://epitomearabica.com/#organization" }
       },
       {
+        "@type": "WebPage",
+        "@id": "https://epitomearabica.com/#webpage",
+        "url": "https://epitomearabica.com/",
+        "name": "Epitome — Ceylon Specialty Coffee",
+        "description": "Epitome is a Sri Lankan house for single-origin Ceylon specialty coffee: highland Arabica, roasted to order.",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "https://epitomearabica.com/#website" },
+        "about": { "@id": "https://epitomearabica.com/#organization" },
+        "mainEntity": { "@id": "https://epitomearabica.com/#product" },
+        "primaryImageOfPage": "https://epitomearabica.com/assets/og.jpg"
+      },
+      {
         "@type": "Product",
         "@id": "https://epitomearabica.com/#product",
-        "name": "Epitome Premium Arabica Coffee",
+        "name": "Epitome",
         "alternateName": ["Ceylon specialty coffee", "Single origin Sri Lankan Arabica beans"],
         "description": "500 g of whole-bean, medium-roast, single-origin Ceylon specialty coffee. 100% Arabica from Sri Lanka’s central highlands, 1,200–1,800 m. Chocolate, vanilla, and stone fruit. Reserved and roasted to order.",
         "image": [
@@ -157,9 +180,10 @@
       <ul class="nav-desktop">
         <li><a href="#origin">Origin</a></li>
         <li><a href="#coffee">The coffee</a></li>
-        <li><a href="#world">In the world</a></li>
-        <li><a href="#ritual">The cup</a></li>
-        <li><a href="#fun" class="nav-fun" data-tetris-open>Fun With Epitome</a></li>
+
+        
+        <li><a href="/journal/">Journal</a></li>
+        <li><a href="/locations.html">Find us</a></li>
         <li><a href="#reserve" class="nav-cta">Reserve</a></li>
       </ul>
     </nav>
@@ -171,9 +195,10 @@
   <nav class="nav-drawer" id="mobile-nav" aria-label="Mobile">
     <a href="#origin">Origin</a>
     <a href="#coffee">The coffee</a>
-    <a href="#world">In the world</a>
-    <a href="#ritual">The cup</a>
-    <a href="#fun" data-tetris-open>Fun With Epitome</a>
+
+    
+    <a href="/journal/">Journal</a>
+    <a href="/locations.html">Find us</a>
     <a href="#reserve">Reserve</a>
   </nav>
 
@@ -186,7 +211,7 @@
       <div class="hero-inner">
         <p class="eyebrow">Product of Sri Lanka · Ceylon Arabica</p>
         <h1>EPITOME</h1>
-        <p class="hero-kicker">Ceylon specialty coffee, rare on an island of tea. Single-origin highland Arabica. One roast. One bag. The kickstart you deserve.</p>
+        <p class="hero-kicker">Ceylon specialty coffee, rare on an island of tea. Single-origin highland Arabica. One roast. One bag. The essence of Ceylon coffee.</p>
         <div class="hero-actions">
           <a class="btn btn-gold" href="#reserve">Reserve a bag</a>
           <a class="btn btn-line" href="#origin">Read the origin</a>
@@ -239,13 +264,13 @@
         <div class="product-shot reveal">
           <div class="bloom-glow" aria-hidden="true"></div>
           <div class="bloom bloom-product">
-            <img src="assets/product.jpg" alt="Epitome Premium Arabica Coffee 500 g bag of whole bean Ceylon specialty coffee, product of Sri Lanka" width="589" height="902">
+            <img src="assets/product.jpg" alt="Epitome 500 g bag of whole bean Ceylon specialty coffee, product of Sri Lanka" width="589" height="902">
           </div>
         </div>
         <article class="tasting-card reveal">
           <p class="chapter-label">02 — The coffee</p>
-          <h2>Premium Arabica Coffee</h2>
-          <p class="lede">Whole roasted beans. Medium roast. A 500 gram reserve of single-origin Sri Lankan Arabica — Ceylon specialty coffee, the only Epitome we pack right now.</p>
+          <h2>Epitome</h2>
+          <p class="lede">Whole roasted beans. Medium roast. A 500 gram reserve of single-origin Sri Lankan Arabica — the one coffee we pack right now.</p>
           <dl>
             <div class="spec"><dt>Origin</dt><dd>Central Highlands, Sri Lanka</dd></div>
             <div class="spec"><dt>Varietal</dt><dd>100% single-origin Arabica</dd></div>
@@ -312,7 +337,7 @@
     <section class="chapter" id="ritual">
       <div class="wrap ritual-layout">
         <figure class="ritual-photo bloom bloom-ritual reveal">
-          <img src="assets/product-cup.jpg" alt="Epitome Premium Arabica bag with a steaming cup of black Sri Lankan coffee" width="864" height="980" loading="lazy" decoding="async">
+          <img src="assets/product-cup.jpg" alt="Epitome bag with a steaming cup of black Sri Lankan coffee" width="864" height="980" loading="lazy" decoding="async">
         </figure>
         <div class="reveal">
           <p class="chapter-label">04 — The cup</p>
@@ -352,12 +377,30 @@
       </div>
     </section>
 
+    <section class="subscribe-band" id="subscribe" aria-label="Join the Reserve List">
+      <div class="wrap subscribe-inner reveal">
+        <p class="chapter-label">The Reserve List</p>
+        <h2 class="display">Be first when a lot <em>opens</em>.</h2>
+        <p class="prose">One letter, occasionally. New harvests, rare lots, and private offers — before the public. We never write often, and we never share your address.</p>
+        <form id="subscribeForm" class="subscribe-form" data-csrf novalidate>
+          <div class="honeypot" aria-hidden="true">
+            <label for="subGotcha">Leave blank</label>
+            <input type="text" id="subGotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <label class="sr-only" for="subEmail">Email address</label>
+          <input id="subEmail" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@atelier.com">
+          <button class="btn btn-gold" type="submit">Join the list</button>
+        </form>
+        <p class="form-status" id="subscribeStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
     <section class="chapter reserve" id="reserve">
       <div class="wrap reserve-layout">
         <div class="reveal">
           <p class="chapter-label">05 — Reserve</p>
           <h2 class="display">Write to the house.<br>We roast <em>after</em> you do.</h2>
-          <p class="prose" style="margin-top: 1.4rem;">There is one product: Premium Arabica Coffee, 500 g, whole bean, medium roast — single-origin Ceylon specialty coffee from Sri Lanka. Tell us your name, where the bag should travel, and how many you want. We confirm by email within a day, then arrange payment and shipping.</p>
+          <p class="prose" style="margin-top: 1.4rem;">There is one product: Epitome, 500 g, whole bean, medium roast — single-origin Ceylon specialty coffee from Sri Lanka. Tell us your name, where the bag should travel, and how many you want. We confirm by email within a day, then arrange payment and shipping.</p>
           <ul class="promises">
             <li>Roasted within 48 hours of confirmation</li>
             <li>Direct reply from support@epitomearabica.com</li>
@@ -399,7 +442,7 @@
             <p id="formErrorMsg">Please try again, or email <a href="mailto:support@epitomearabica.com">support@epitomearabica.com</a> and we will take the order by hand.</p>
           </div>
 
-          <form id="orderForm" action="mail.php" method="POST" novalidate>
+          <form id="orderForm" action="/mail.php" method="POST" data-csrf novalidate>
             <div class="form-grid">
               <div class="field">
                 <label for="firstName">First name *</label>
@@ -423,7 +466,7 @@
               </div>
               <div class="field">
                 <label for="grind">Product</label>
-                <input id="grind" name="grind" type="text" value="Whole Roasted Beans — Medium Roast" readonly>
+                <input id="grind" name="grind" type="text" value="Epitome — Whole Bean · Medium Roast" readonly>
               </div>
               <div class="field">
                 <label for="quantity">Quantity (bags) *</label>
@@ -450,13 +493,67 @@
         </div>
       </div>
     </section>
+
+    <section class="chapter" id="wholesale">
+      <div class="wrap reserve-layout">
+        <div class="reveal">
+          <p class="chapter-label">For the trade</p>
+          <h2 class="display">Serve the island’s <em>rarest</em> cup.</h2>
+          <p class="prose" style="margin-top:1.4rem;">For cafés, hotels, and restaurants — Epitome by arrangement. Whole-bean, roasted to order, in the volumes your house needs. Tell us who you are and where you pour, and a member of the house will write within a day or two.</p>
+          <ul class="promises">
+            <li>Wholesale & hospitality pricing on request</li>
+            <li>Roasted to order, shipped fresh</li>
+            <li>Brew training and support</li>
+            <li>Private labelling available</li>
+          </ul>
+        </div>
+
+        <div class="form-panel reveal">
+          <form id="wholesaleForm" data-csrf novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="whName">Your name *</label>
+                <input id="whName" name="name" type="text" autocomplete="name" required maxlength="120" placeholder="James Hartley">
+              </div>
+              <div class="field">
+                <label for="whEmail">Email *</label>
+                <input id="whEmail" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@venue.com">
+              </div>
+              <div class="field">
+                <label for="whVenue">Venue</label>
+                <input id="whVenue" name="venue" type="text" maxlength="160" placeholder="Hotel / café / roastery">
+              </div>
+              <div class="field">
+                <label for="whCity">City</label>
+                <input id="whCity" name="city" type="text" maxlength="120" placeholder="Colombo">
+              </div>
+              <div class="field full">
+                <label for="whVolume">Monthly volume (approx.)</label>
+                <input id="whVolume" name="volume" type="text" maxlength="120" placeholder="e.g. 20 kg">
+              </div>
+              <div class="field full">
+                <label for="whMessage">Message</label>
+                <textarea id="whMessage" name="message" maxlength="2000" placeholder="How you serve coffee, what you need…"></textarea>
+              </div>
+            </div>
+            <div class="honeypot" aria-hidden="true">
+              <label for="whGotcha">Leave blank</label>
+              <input type="text" id="whGotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="btn btn-gold form-submit" type="submit">Send enquiry</button>
+            <p class="form-status" id="wholesaleStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer" id="contact">
     <div class="wrap footer-grid">
       <div class="footer-brand">
         <img src="assets/crest.png" alt="Epitome crest with the Sri Lankan flag" width="72" height="51">
-        <p>Ceylon specialty coffee. Single-origin highland Arabica. Product of Sri Lanka. The kickstart you deserve.</p>
+        <p>Single-origin highland Arabica. The essence of Ceylon coffee.</p>
       </div>
       <div class="footer-col">
         <h2>House</h2>
@@ -464,7 +561,10 @@
         <a href="#coffee">The coffee</a>
         <a href="#world">Gallery</a>
         <a href="#ritual">The cup</a>
+        <a href="/journal/">Journal</a>
+        <a href="/locations.html">Find us</a>
         <a href="#faq">From the house</a>
+        <a href="#fun" data-tetris-open>A small diversion</a>
       </div>
       <div class="footer-col">
         <h2>Write</h2>
@@ -476,12 +576,17 @@
       <div class="footer-col">
         <h2>Reserve</h2>
         <p>One roast. Direct from the house. We confirm every bag by hand.</p>
+        <a href="#subscribe">Reserve List</a>
+        <a href="#wholesale">Wholesale & hospitality</a>
         <a class="btn btn-line" href="#reserve" style="margin-top:0.8rem;">Place a reserve</a>
       </div>
     </div>
     <div class="wrap footer-base">
       <span>© 2026 Epitome Coffee · Sri Lanka</span>
       <span>All rights reserved</span>
+    </div>
+    <div class="wrap footer-legal">
+      <p>Information on this site is for reference only and subject to change without notice. <a href="/legal.html">Legal</a></p>
     </div>
   </footer>
 
@@ -527,5 +632,6 @@
 
   <script src="assets/site.js"></script>
   <script src="assets/tetris.js?v=tetris-4"></script>
+  <script src="assets/chatbot.js"></script>
 </body>
 </html>

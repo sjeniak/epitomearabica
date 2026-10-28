@@ -84,20 +84,29 @@
     document.getElementById(id)?.addEventListener("input", () => setError(id, ""));
   });
 
+  const track = (name, params) => {
+    try {
+      if (typeof window.gtag === "function") window.gtag("event", name, params);
+    } catch (err) {
+      /* analytics is non-critical */
+    }
+  };
+
   const injectToken = async () => {
     try {
-      const res = await fetch("token.php", { credentials: "same-origin" });
+      const res = await fetch("/token.php", { credentials: "same-origin" });
       const data = await res.json();
-      if (!data.token || !form) return;
-      let input = document.getElementById("csrfToken");
-      if (!input) {
-        input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "_csrf";
-        input.id = "csrfToken";
-        form.appendChild(input);
-      }
-      input.value = data.token;
+      if (!data.token) return;
+      document.querySelectorAll("form[data-csrf]").forEach((f) => {
+        let input = f.querySelector("input[name='_csrf']");
+        if (!input) {
+          input = document.createElement("input");
+          input.type = "hidden";
+          input.name = "_csrf";
+          f.appendChild(input);
+        }
+        input.value = data.token;
+      });
     } catch (err) {
       console.warn("Could not load security token", err);
     }
@@ -139,7 +148,7 @@
     }
 
     try {
-      const res = await fetch("mail.php", { method: "POST", body: new FormData(form) });
+      const res = await fetch("/mail.php", { method: "POST", body: new FormData(form) });
       const data = await res.json();
 
       if (res.ok && data.ok) {
@@ -148,6 +157,7 @@
         errorBox?.classList.remove("is-visible");
         const named = document.getElementById("successName");
         if (named) named.textContent = firstName;
+        track("generate_lead", { form: "reserve", product: "Epitome", quantity: qty ? qty.value : 1 });
         return;
       }
 
@@ -201,4 +211,61 @@
     }
     injectToken();
   });
+  const setStatus = (el, message, isError) => {
+    if (!el) return;
+    el.textContent = message || "";
+    el.classList.toggle("is-error", Boolean(isError));
+  };
+
+  const leadSubmit = (formId, payloadType, statusId) => {
+    const leadForm = document.getElementById(formId);
+    const status = document.getElementById(statusId);
+    if (!leadForm) return;
+    leadForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const btn = leadForm.querySelector("button[type='submit']");
+      const fd = new FormData(leadForm);
+      fd.set("type", payloadType);
+      let valid = true;
+      leadForm.querySelectorAll("[required]").forEach((el) => {
+        const v = String(el.value || "").trim();
+        const ok = el.type === "email" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) : v !== "";
+        el.setAttribute("aria-invalid", ok ? "false" : "true");
+        if (!ok) valid = false;
+      });
+      if (!valid) {
+        setStatus(status, "A few fields need your attention.", true);
+        return;
+      }
+      if (btn) {
+        btn.disabled = true;
+        btn.dataset.orig = btn.textContent;
+        btn.textContent = "Sending…";
+      }
+      try {
+        const res = await fetch("/lead.php", { method: "POST", body: fd });
+        const json = await res.json();
+        if (res.ok && json.ok) {
+          leadForm.reset();
+          setStatus(status, json.message || "Thank you — the house will write.", false);
+          track("generate_lead", { form: payloadType });
+        } else {
+          const msg = json.error || (json.errors && json.errors.join(" ")) || "Could not send. Please try again.";
+          setStatus(status, msg, true);
+        }
+      } catch (err) {
+        setStatus(status, "Could not send. Please try again, or email support@epitomearabica.com.", true);
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = btn.dataset.orig || btn.textContent;
+        }
+        injectToken();
+      }
+    });
+  };
+
+  leadSubmit("subscribeForm", "subscribe", "subscribeStatus");
+  leadSubmit("wholesaleForm", "wholesale", "wholesaleStatus");
+  leadSubmit("stockistForm", "stockist", "stockistStatus");
 })();

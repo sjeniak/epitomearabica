@@ -1,9 +1,28 @@
 User-agent: *
 Allow: /
-
 Disallow: /data/
 Disallow: /inc/
 Disallow: /token.php
 Disallow: /mail.php
+Disallow: /lead.php
+
+# AI search & assistant crawlers are welcome to discover Epitome
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: anthropic-ai
+User-agent: cohere-ai
+User-agent: Applebot-Extended
+User-agent: Bytespider
+Allow: /
+Disallow: /data/
+Disallow: /inc/
+Disallow: /token.php
+Disallow: /mail.php
+Disallow: /lead.php
 
 Sitemap: https://epitomearabica.com/sitemap.xml
